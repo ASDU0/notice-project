@@ -1,0 +1,89 @@
+@import url('../styles/general.css');
+
+.container-login {
+  min-height: 100vh;
+  background: linear-gradient(0deg, rgba(249, 187, 42, 0.5), rgba(249, 187, 42, 0.5)),
+    url('../images/background.png');
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login {
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+  border-radius: 2rem;
+  gap: 3.5rem;
+  padding: 8% 7%;
+  position: relative;
+}
+
+.login i {
+  font-size: 2.5rem;
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  color: var(--gray);
+  cursor: pointer;
+}
+
+.logo h1 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 4.8rem;
+  letter-spacing: 0.032rem;
+  color: var(--white);
+  text-align: center;
+}
+
+.login input {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.5rem;
+  line-height: 3rem;
+  letter-spacing: 0.16rem;
+  color: var(--gray);
+  padding: 2.6rem 4.3rem;
+  background-color: var(--dark);
+  border-radius: 4rem;
+  border: none;
+}
+
+.login label {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.5rem;
+  line-height: 3rem;
+  letter-spacing: -0.064rem;
+  color: var(--white);
+}
+
+.login button {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 2.4rem;
+  text-align: center;
+  letter-spacing: 0.032rem;
+  color: var(--white);
+  background-color: var(--yellow);
+  padding: 2.4rem;
+  border: none;
+  border-radius: 3.5rem;
+  cursor: pointer;
+}
+
+.login p {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.5rem;
+  line-height: 3rem;
+  letter-spacing: -0.064rem;
+  color: var(--white);
+  text-align: center;
+}

@@ -1,0 +1,42 @@
+@import url('../styles/general.css');
+
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 4rem 6rem 2.6rem 6rem;
+  font-size: 2rem;
+}
+
+.filter-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filter-section > a {
+  text-decoration: none;
+  padding: 1.8rem 1.2rem;
+  margin-left: 0.5rem;
+}
+
+.filter-section > a:hover {
+  border-radius: 3.5rem;
+  text-decoration: underline;
+  color: var(--yellow);
+}
+
+.logo-section > *, .filter-section > a {
+  color: #B7B5CA;
+}
+
+.nav-bar > button {
+  padding: 1.2rem 2rem;
+  color: white;
+  background-color: #F9BB2A;
+  border: none;
+  border-radius: 3.5rem;
+  cursor: pointer;
+  font-size: inherit;
+}
