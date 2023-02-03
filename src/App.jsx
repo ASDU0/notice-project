@@ -7,18 +7,24 @@ import {
   Routes
 } from "react-router-dom";
 
-import Home from "./components/Home";
-import Login from "./components/Login";
-import Register from "./components/Register";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import EditProfile from "./pages/EditProfile";
+import NewNotice from "./pages/NewNotice";
+import Register from "./pages/Register";
+import MyNotices from "./pages/MyNotices";
 
 function App() {
   return (
     <BrowserRouter>
       <Outlet />
       <Routes>
-        <Route exact path="/" element={<Home />}/>
-        <Route path="login" element={<Login />}/>
-        <Route exact path="register" element={<Register />}/>
+        <Route path="/" element={<Home />}/>
+        <Route path="/login" element={<Login />}/>
+        <Route path="/register" element={<Register />}/>
+        <Route path="/newnotice" element={<NewNotice />} />
+        <Route path="/editprofile" element={<EditProfile />} />
+        <Route path="/mynotices" element={<MyNotices />} />
       </Routes>
     </BrowserRouter>
   )
