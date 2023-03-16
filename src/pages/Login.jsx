@@ -1,13 +1,18 @@
 import { Box, Grid } from '@mui/material'
-import SimplePaper from '../components/SimplePaper'
-import banneremploye from '../images/banneremploye.png'
+import PaperLogin from '../components/PaperLogin'
 
 export default function Login() {
   return (
-    <Box sx={{ flexGrow:1, width:'100%', height:'100%' }}>
-      <Grid container>
-        <SimplePaper />
-      </Grid>
+    <Box
+      sx={{
+      flexGrow:1, width:'100%', minHeight:'100vh',
+      display: 'flex', flexDirection: 'column',
+      justifyContent: 'center', alignItems: 'center'
+    }}
+      className='login'
+      component='form'
+    >
+      <PaperLogin />
     </Box>
   )
 }

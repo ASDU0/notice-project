@@ -26,9 +26,6 @@ export default function EditProfile() {
       <Box sx={{ flexGrow:1 }} mx={2} my={4}>
         <Grid container spacing={3} >
           <Grid item xs={12}>
-            <AppbarLogedIn />
-          </Grid>
-          <Grid item xs={12}>
             <Typography variant='h2'>Edit profile</Typography>
           </Grid>
           <Grid item xs={12} sm={7}>

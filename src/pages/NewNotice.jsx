@@ -25,7 +25,6 @@ export default function NewNotice() {
   return (
     <>
       <Stack mx={2} my={4} spacing={1} component='form'>
-        <AppbarLogedIn />
         <Typography variant='h2'>New Notice</Typography>
         <TextField label='Title' variant='filled'>Hello World</TextField>
         <TextField label='Description' variant='filled'>Hello World</TextField>

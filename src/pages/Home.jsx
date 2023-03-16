@@ -10,9 +10,6 @@ export default function Home() {
     <Box sx={{ flexGrow:1 }} mx={2} my={4}>
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <AppbarLogedIn />
-        </Grid>
-        <Grid item xs={12}>
           <Stack direction='row-reverse' spacing={2}>
             <Select />
             <Select />

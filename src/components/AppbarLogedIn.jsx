@@ -15,6 +15,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -57,28 +58,42 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function AppbarLogedIn() {
+  // 2 estados
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
+  // si no haces ningun click, se queda false
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+  const navigate = useNavigate();
+
+  // cambia el estado, hace que se vuelva a renderizar
   const handleProfileMenuOpen = (event) => {
+    console.log(event.currentTarget);
     setAnchorEl(event.currentTarget);
   };
 
+  // cambia el estado
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
 
+  // cambia el estado
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
   };
 
+  // cambia el estado
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+
+  const navigateTo = (page) => {
+    handleMenuClose();
+    navigate('/' + page);
+  }
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -97,8 +112,8 @@ export default function AppbarLogedIn() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={() => navigateTo('editprofile')}>Profile</MenuItem>
+      <MenuItem onClick={() => navigateTo('mynotices')}>My notices</MenuItem>
     </Menu>
   );
 
@@ -167,14 +182,17 @@ export default function AppbarLogedIn() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
-          >
-            MUI
-          </Typography>
+          <Link to='/'>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ display: { xs: 'none', sm: 'block' } }}
+            >
+              NOTICE
+            </Typography>
+          </Link>
+          {/* <Box sx={{ flexGrow: 1 }} /> */}
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
