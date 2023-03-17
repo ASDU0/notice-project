@@ -10,9 +10,10 @@ export default function Login() {
       justifyContent: 'center', alignItems: 'center'
     }}
       className='login'
-      component='form'
     >
-      <PaperLogin />
+      <Box sx={{ width: 500}}>
+        <PaperLogin />
+      </Box>
     </Box>
   )
 }

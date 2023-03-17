@@ -16,6 +16,8 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../auth/AuthContext';
+import { types } from '../types/types';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -68,9 +70,10 @@ export default function AppbarLogedIn() {
 
   const navigate = useNavigate();
 
+  const {dispatch} = React.useContext(AuthContext);
+
   // cambia el estado, hace que se vuelva a renderizar
   const handleProfileMenuOpen = (event) => {
-    console.log(event.currentTarget);
     setAnchorEl(event.currentTarget);
   };
 
@@ -90,9 +93,20 @@ export default function AppbarLogedIn() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const handleLogout = () => {
+    handleMenuClose();
+    dispatch({
+      type: types.logout,
+    });
+  }
+
   const navigateTo = (page) => {
     handleMenuClose();
     navigate('/' + page);
+  }
+
+  const goHome = () => {
+    navigate('/');
   }
 
   const menuId = 'primary-search-account-menu';
@@ -114,6 +128,7 @@ export default function AppbarLogedIn() {
     >
       <MenuItem onClick={() => navigateTo('editprofile')}>Profile</MenuItem>
       <MenuItem onClick={() => navigateTo('mynotices')}>My notices</MenuItem>
+      <MenuItem onClick={handleLogout}>Logout</MenuItem>
     </Menu>
   );
 
@@ -182,16 +197,15 @@ export default function AppbarLogedIn() {
           >
             <MenuIcon />
           </IconButton>
-          <Link to='/'>
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              sx={{ display: { xs: 'none', sm: 'block' } }}
-            >
-              NOTICE
-            </Typography>
-          </Link>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ display: { xs: 'none', sm: 'block' } }}
+            onClick={goHome}
+          >
+            NOTICE
+          </Typography>
           {/* <Box sx={{ flexGrow: 1 }} /> */}
           <Search>
             <SearchIconWrapper>
