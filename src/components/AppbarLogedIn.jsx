@@ -15,9 +15,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import { Link, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../auth/AuthContext';
-import { types } from '../types/types';
+import { useNavigate } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -70,8 +68,6 @@ export default function AppbarLogedIn() {
 
   const navigate = useNavigate();
 
-  const {dispatch} = React.useContext(AuthContext);
-
   // cambia el estado, hace que se vuelva a renderizar
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -95,9 +91,6 @@ export default function AppbarLogedIn() {
 
   const handleLogout = () => {
     handleMenuClose();
-    dispatch({
-      type: types.logout,
-    });
   }
 
   const navigateTo = (page) => {

@@ -6,7 +6,7 @@ const PublicRoute = ({
   children
 }) => {
   if (!isAuthenticated) return children;
-  
+
   return <Navigate to='/' replace />
 }
 

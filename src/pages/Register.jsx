@@ -2,60 +2,135 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Stack, TextField, Typography, Button } from '@mui/material';
-import { AuthContext } from '../auth/AuthContext';
-import { types } from '../types/types';
 import { useNavigate } from 'react-router-dom';
+import { useForm } from '../hooks/useForm';
+import { useDispatch } from 'react-redux';
+import { startRegister } from '../actions/auth';
 
 export default function Register() {
 
-  const {dispatch} = React.useContext(AuthContext);
-
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [formValues, handleInputChange] = useForm({
+    firstname: '', surnames: '',
+    email: '', ruc: '',
+    companyName: '', phoneCompanyNumber: 0,
+    avatar: 'someurlformyavatar.jpg', role: '',
+    password: '', passwordConfirmation: ''
+  });
+
+  const {
+    firstname, surnames, email, ruc,
+    companyName, phoneCompanyNumber,
+    avatar, role, password, passwordConfirmation
+  } = formValues;
 
   const goToLogin = () => {
-    navigate('/login');
+    navigate('/auth');
   }
 
   const handleSignup = (e) => {
     e.preventDefault();
-    dispatch({
-      type: types.login,
-      payload: {
-        name: 'roswell'
-      }
-    });
+    dispatch(startRegister(formValues));
   }
 
   return (
     <Box sx={{ flexGrow: 1 }} mx={5} my={1}
       className='register'
     >
-      <Grid container spacing={2} minHeight='100vh'>
-        <Grid item xs={6} mt={2} className='have-account' >
-          <Stack spacing={2}  alignItems='center' direction='column-reverse'
-              height='100%' pb={6}>
-            <Button variant='contained'
-              onClick={goToLogin}
-            >
-              Log In
-            </Button>
-            <Typography variant='body1'>Already have an account?</Typography>
-          </Stack>
-        </Grid>
+      <Grid container spacing={2}>
+
         {/* Este componente ocupa 100vh de su padre */}
-        <Grid container item xs={6} display='flex' direction='column' alignItems='strech'>
-          <Box padding={2} component='form' minHeight='100%' display='flex' flexDirection='column'
-              justifyContent='center' onSubmit={handleSignup}>
-            <Stack spacing={2} >
-              <Typography variant='h5'>Sing Up</Typography>
-              <TextField label='Username' variant='filled'>Hello World</TextField>
-              <TextField label='Email' variant='filled'>Stimate king</TextField>
-              <TextField label='Phone Number' variant='filled'>Stimate king</TextField>
-              <TextField label='Password' variant='filled' type='password'>Stimate king</TextField>
-              <TextField label='Cofirm password' variant='filled' type='password'>Stimate king</TextField>
-              <Button type='submit' variant='contained'>Sign Up</Button>
+        <Grid item xs={12} display='flex'
+          alignItems='flex-end' justifyContent='center'
+          textAlign='center'
+        >
+          <Typography variant='h5'>
+            Registra tus datos
+          </Typography>
+        </Grid>
+
+        <Grid container item xs={12} spacing={2}>
+          <Grid item xs={12} md={6}
+            // mx={{ xs: 1, sm: 5, md: 2 }}
+            mx={{ sm: 5, md: 0 }}
+          >
+            <Stack spacing={2}>
+              <TextField
+                label='Nombres' variant='filled'
+                name='firstname' onChange={handleInputChange}
+                placeholder='Roswell Jaime' value={firstname}
+              />
+
+              <TextField
+                label='Apellidos' variant='filled'
+                name='surnames' onChange={handleInputChange}
+                placeholder='Pando Muñoz' value={surnames}
+              />
+
+              <TextField
+                label='Email' variant='filled'
+                name='email' onChange={handleInputChange}
+                placeholder='example@gmail.com' value={email}
+              />
+
+              <TextField
+                label='Avatar' variant='filled'
+                name='avatar' onChange={handleInputChange}
+                placeholder='avatar.jpg' value={avatar}
+              />
             </Stack>
-          </Box>
+          </Grid>
+
+          <Grid item xs={12} md={6}
+            mx={{ sm: 5, md: 0 }}
+          >
+            <Stack spacing={2}>
+              <TextField
+                label='RUC' variant='filled'
+                name='ruc' onChange={handleInputChange}
+                placeholder='12345678910' value={ruc}
+              />
+
+              <TextField
+                label='Nombre de Empresa' variant='filled'
+                name='companyName' onChange={handleInputChange}
+                placeholder='Alicorp S.A.' value={companyName}
+              />
+
+              <TextField
+                label='Número telefónico' variant='filled'
+                name='phoneCompanyNumber' onChange={handleInputChange}
+                placeholder='987654321' value={phoneCompanyNumber}
+              />
+
+              <TextField
+                label='Rol' variant='filled'
+                name='role' onChange={handleInputChange}
+                placeholder='Director General ...' value={role}
+              />
+            </Stack>
+          </Grid>
+
+          <Grid item xs={12} textAlign='center'
+            mx={{ sm: 5, md: 0 }}
+          >
+            <Stack spacing={2}>
+              <TextField
+                label='Contraseña' variant='filled' type='password'
+                name='password' onChange={handleInputChange}
+                placeholder='12345' value={password}
+              />
+
+              <TextField
+                label='Cofirme contraseña' variant='filled' type='password'
+                name='passwordConfirmation' onChange={handleInputChange}
+                placeholder='12345' value={passwordConfirmation}
+              />
+              <Button type='submit' variant='contained'>Registrar</Button>
+            </Stack>
+          </Grid>
         </Grid>
       </Grid>
     </Box>
