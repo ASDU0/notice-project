@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import { Stack, TextField, Typography, Button } from '@mui/material';
+import { Stack, TextField, Typography, Button, Link } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from '../hooks/useForm';
 import { useDispatch } from 'react-redux';
@@ -36,8 +36,10 @@ export default function Register() {
   }
 
   return (
-    <Box sx={{ flexGrow: 1 }} mx={5} my={1}
+    <Box sx={{ flexGrow: 1 }} my={1}
       className='register'
+      component='form'
+      onSubmit={handleSignup}
     >
       <Grid container spacing={2}>
 
@@ -114,7 +116,7 @@ export default function Register() {
           </Grid>
 
           <Grid item xs={12} textAlign='center'
-            mx={{ sm: 5, md: 0 }}
+            mx={{ sm: 5, md: 15 }}
           >
             <Stack spacing={2}>
               <TextField
@@ -129,6 +131,12 @@ export default function Register() {
                 placeholder='12345' value={passwordConfirmation}
               />
               <Button type='submit' variant='contained'>Registrar</Button>
+
+              <Typography variant='body2'>
+                <Link onClick={goToLogin} style={{ cursor: 'pointer' }}>
+                  Ya tienes una cuenta ?
+                </Link>
+              </Typography>
             </Stack>
           </Grid>
         </Grid>

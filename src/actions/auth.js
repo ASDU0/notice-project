@@ -1,20 +1,21 @@
 import axios from "axios"
+import { login } from "../reducers/authReducer"
 
 
 export const startRegister = (newUser) => {
   return async(dispatch) => {
-    const res = await axios.post(
-      'http://localhost:3010/api/user',
-      {...newUser}
-    );
-
-    const { data } = res;
-    console.log(res);
-    console.log(data);
-    console.log(data.message);
-    if (data.message) {
-      const { message } = data.message;
-      console.error(`error encontrado ${message}`)
+    try {
+      const res = await axios.post(
+        'http://localhost:3010/api/user',
+        {...newUser}
+      )
+      const { data } = res
+      const {email, firstname, surnames} = data
+      dispatch(
+        login({ email, firstname, surnames })
+      )
+    } catch (e) {
+      console.log(e.response.data.message)
     }
   }
 }

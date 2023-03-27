@@ -6,7 +6,7 @@ const authSlice = createSlice({
   initialState: {
     email: '',
     firstname: '',
-    logged: false,
+    logged: true,
     surnames: '',
   },
   reducers: {
