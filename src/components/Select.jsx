@@ -21,7 +21,7 @@ const currencies = [
   },
 ];
 
-export default function Select() {
+export function Select() {
   return (
     <TextField
       id="filled-select-currency"

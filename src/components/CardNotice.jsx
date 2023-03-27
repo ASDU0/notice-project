@@ -28,7 +28,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function CardNotice() {
+export function CardNotice() {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {

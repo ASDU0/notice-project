@@ -1,14 +1,14 @@
 import React from "react";
-import AppRouter from "./routes/AppRouter";
-import { Provider } from "react-redux";
-import store from "./store/store";
+import { Appbar } from "./components";
+import { Outlet } from "react-router-dom";
 
 function App() {
 
   return (
-    <Provider store={store}>
-      <AppRouter />
-    </Provider>
+    <>
+      <Appbar />
+      <Outlet />
+    </>
   )
 
 }

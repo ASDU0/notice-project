@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom'
 
 const ProtectedRoute = ({
   isAllowed,
-  redirectPath = '/auth',
+  redirectPath = '/',
   children
 }) => {
   if (!isAllowed) return <Navigate to={redirectPath} replace />

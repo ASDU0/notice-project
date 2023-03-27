@@ -1,14 +1,12 @@
-import { Box, Stack, Grid, FormControl, InputLabel } from "@mui/material";
-import { useState } from "react";
-import AppbarLogedIn from "../components/AppbarLogedIn";
-import CardNotice from "../components/CardNotice2";
-import Select from "../components/Select";
+import { Box, Stack, Grid } from "@mui/material";
+import { CardNotice, Select } from "../components";
 
 
 export default function Home() {
+  const times = [1,2,3,4,5,6]
   return (
     <Box sx={{ flexGrow:1 }} mx={2} my={4}>
-      <Grid container spacing={3}>
+      <Grid container spacing={1}>
         <Grid item xs={12}>
           <Stack direction='row-reverse' spacing={2}>
             <Select />
@@ -17,15 +15,16 @@ export default function Home() {
             <Select />
           </Stack>
         </Grid>
-        <Grid item xs={12}>
-          <Stack direction='row' spacing={3} flexWrap='wrap'>
-            <CardNotice />
-            <CardNotice />
-            <CardNotice />
-            <CardNotice />
-            <CardNotice />
-            <CardNotice />
-          </Stack>
+        <Grid container item xs={12} spacing={1}
+          textAlign='center'
+        >
+          {
+            times.map(e => (
+              <Grid item key={e}>
+                <CardNotice />
+              </Grid>
+            ))
+          }
         </Grid>
       </Grid>
     </Box>

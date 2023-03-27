@@ -1,6 +1,5 @@
 import * as React from 'react'
-import { Box, Grid, Stack, Typography, TextField, MenuItem, Button } from '@mui/material'
-import AppbarLogedIn from '../components/AppbarLogedIn'
+import { Stack, Typography, TextField, MenuItem, Button } from '@mui/material'
 
 const categories = [
   {
@@ -24,12 +23,14 @@ const categories = [
 export default function NewNotice() {
   return (
     <>
-      <Stack mx={2} my={4} spacing={1} component='form'>
-        <Typography variant='h2'>New Notice</Typography>
+      <Stack mx={2} my={4} spacing={1} component='form'
+        maxWidth={600}
+      >
+        <Typography variant='h3'>New Notice</Typography>
         <TextField label='Title' variant='filled'>Hello World</TextField>
         <TextField label='Description' variant='filled'>Hello World</TextField>
         <TextField label='Select' variant='filled' select
-          defaultValue='C1' helperText='Selecciona una categoria'
+          defaultValue='' helperText='Selecciona una categoria'
           id='filled-select-category'>
           {
             categories.map((option) => (
